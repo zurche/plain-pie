@@ -1,5 +1,4 @@
 # plain-pie
-A simple plain pie chart widget fully customizable
 
 Add to you PROJECT build.gradle
 ```groovy
