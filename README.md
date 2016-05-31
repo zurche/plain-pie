@@ -1,8 +1,6 @@
 # plain-pie
 A simple plain pie chart widget fully customizable
 
-![alt tag](https://github.com/zurche/plain-pie/blob/master/img/pie_1.png)
-
 Add to you PROJECT build.gradle
 ```groovy
 allprojects {
