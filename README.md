@@ -1,6 +1,6 @@
 # plain-pie
 
-Add to you PROJECT build.gradle
+Add to you project build.gradle
 ```groovy
 allprojects {
 	repositories {
@@ -10,7 +10,7 @@ allprojects {
 }
 ```
 
-Add to you APP MODULE build.gradle
+Add to you app module build.gradle
 ```groovy
 dependencies {
         compile 'com.github.zurche:plain-pie:v0.1'
