@@ -3,6 +3,26 @@ A simple plain pie chart widget fully customizable
 
 ![alt tag](https://github.com/zurche/plain-pie/blob/master/img/pie_1.png)
 
+Add to you PROJECT build.gradle
+```groovy
+allprojects {
+		repositories {
+			...
+			maven { url "https://jitpack.io" }
+		}
+	}
+```
+
+Add to you APP MODULE build.gradle
+```groovy
+dependencies {
+	        compile 'com.github.zurche:plain-pie:v0.1'
+	}
+```
+<p align="center">
+  <img src="https://github.com/zurche/plain-pie/blob/master/img/pie_1.png" alt="Example Widget"/>
+</p>
+
 Add the widget to your layout
 ```xml
 <az.plainpie.PieView
