@@ -1,6 +1,6 @@
 # plain-pie
 
-[![Release](https://jitpack.io/v/zurche/plain-pie.svg)](https://jitpack.io/#zurche/plain-pie)
+[![Release](https://jitpack.io/v/zurche/plain-pie.svg)](https://jitpack.io/#zurche/plain-pie/v0.1)
 
 Add to your project build.gradle
 ```groovy
