@@ -1,6 +1,4 @@
-# plain-pie
-
-[![Release](https://jitpack.io/v/zurche/plain-pie.svg)](https://jitpack.io/#zurche/plain-pie/v0.1) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-plain--pie-green.svg?style=true)](https://android-arsenal.com/details/1/3689)
+# plain-pie [![Release](https://jitpack.io/v/zurche/plain-pie.svg)](https://jitpack.io/#zurche/plain-pie/v0.1) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-plain--pie-green.svg?style=true)](https://android-arsenal.com/details/1/3689)
 
 Add to your project build.gradle
 ```groovy
