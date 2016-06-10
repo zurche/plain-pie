@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Plain-pie by zurche</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Plain-pie</h1>
+        <h2>A simple plain pie chart widget fully customizable</h2>
+        <a href="https://github.com/zurche/plain-pie" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="plain-pie--" class="anchor" href="#plain-pie--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>plain-pie <a href="https://jitpack.io/#zurche/plain-pie/v0.1"><img src="https://jitpack.io/v/zurche/plain-pie.svg" alt="Release"></a> <a href="https://android-arsenal.com/details/1/3689"><img src="https://img.shields.io/badge/Android%20Arsenal-plain--pie-green.svg?style=true" alt="Android Arsenal"></a>
+</h1>
+
+<p>Add to your project build.gradle</p>
+
+<div class="highlight highlight-source-groovy"><pre>allprojects {
+    repositories {
+        <span class="pl-k">..</span>.
+        maven { url <span class="pl-s"><span class="pl-pds">"</span>https://jitpack.io<span class="pl-pds">"</span></span> }
+    }
+}</pre></div>
+
+<p>Add to your app module build.gradle</p>
+
+<div class="highlight highlight-source-groovy"><pre>dependencies {
+        compile <span class="pl-s"><span class="pl-pds">'</span>com.github.zurche:plain-pie:v0.1<span class="pl-pds">'</span></span>
+}</pre></div>
+
+<p align="center">
+  <img src="https://github.com/zurche/plain-pie/blob/master/img/pie_1.png" alt="Example Widget">
+</p>
+
+<p>Add the widget to your layout</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">az</span>.plainpie.PieView
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>@+id/pieView<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>200dp<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>200dp<span class="pl-pds">"</span></span>
+    <span class="pl-e">plainpie</span><span class="pl-e">:</span><span class="pl-e">inner_pie_padding</span>=<span class="pl-s"><span class="pl-pds">"</span>30<span class="pl-pds">"</span></span>
+    <span class="pl-e">plainpie</span><span class="pl-e">:</span><span class="pl-e">percentage</span>=<span class="pl-s"><span class="pl-pds">"</span>75<span class="pl-pds">"</span></span>
+    <span class="pl-e">plainpie</span><span class="pl-e">:</span><span class="pl-e">percentage_size</span>=<span class="pl-s"><span class="pl-pds">"</span>70<span class="pl-pds">"</span></span>
+    <span class="pl-e">plainpie</span><span class="pl-e">:</span><span class="pl-e">inner_text_visibility</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>/&gt;</pre></div>
+
+<p>Remember to add a namespace for the library in your layout:</p>
+
+<div class="highlight highlight-source-js"><pre>xmlns<span class="pl-k">:</span>plainpie<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>http://schemas.android.com/apk/res-auto<span class="pl-pds">"</span></span></pre></div>
+
+<p>You can customize the widget from the layout file, or from the activity once you obtain a reference to it:</p>
+
+<div class="highlight highlight-source-js"><pre>PieView pieView <span class="pl-k">=</span> (PieView) <span class="pl-en">findViewById</span>(<span class="pl-c1">R</span>.<span class="pl-c1">id</span>.<span class="pl-smi">pieView</span>);
+<span class="pl-smi">pieView</span>.<span class="pl-en">setPercentageBackgroundColor</span>(<span class="pl-en">getResources</span>().<span class="pl-en">getColor</span>(<span class="pl-c1">R</span>.<span class="pl-c1">color</span>.<span class="pl-smi">customColor2</span>));
+<span class="pl-smi">pieView</span>.<span class="pl-en">setInnerText</span>(<span class="pl-s"><span class="pl-pds">"</span>A<span class="pl-pds">"</span></span>);</pre></div>
+
+<p>You can update any color of the widget:</p>
+
+<div class="highlight highlight-source-js"><pre>PieView pieView <span class="pl-k">=</span> (PieView) <span class="pl-en">findViewById</span>(<span class="pl-c1">R</span>.<span class="pl-c1">id</span>.<span class="pl-smi">pieView</span>);
+
+<span class="pl-c">// Change the color fill of the bar representing the current percentage</span>
+<span class="pl-smi">pieView</span>.<span class="pl-en">setPercentageBackgroundColor</span>(<span class="pl-en">getResources</span>().<span class="pl-en">getColor</span>(<span class="pl-c1">R</span>.<span class="pl-c1">color</span>.<span class="pl-smi">customColor1</span>));
+
+<span class="pl-c">// Change the color fill of the center of the widget</span>
+<span class="pl-smi">pieView</span>.<span class="pl-en">setCenterBackgroundColor</span>(<span class="pl-en">getResources</span>().<span class="pl-en">getColor</span>(<span class="pl-c1">R</span>.<span class="pl-c1">color</span>.<span class="pl-smi">customColor21</span>));
+
+<span class="pl-c">// Change the color fill of the background of the widget, by default is transparent</span>
+<span class="pl-smi">pieView</span>.<span class="pl-en">setMainBackgroundColor</span>(<span class="pl-en">getResources</span>().<span class="pl-en">getColor</span>(<span class="pl-c1">R</span>.<span class="pl-c1">color</span>.<span class="pl-smi">customColor5</span>));
+
+<span class="pl-c">// Change the color of the text of the widget</span>
+<span class="pl-smi">pieView</span>.<span class="pl-en">setTextColor</span>(<span class="pl-en">getResources</span>().<span class="pl-en">getColor</span>(<span class="pl-c1">R</span>.<span class="pl-c1">color</span>.<span class="pl-smi">customColor12</span>));</pre></div>
+
+<p>If required you can also change the area covered by the inner circle of the widget to change is appearence:</p>
+
+<div class="highlight highlight-source-js"><pre>PieView pieView <span class="pl-k">=</span> (PieView) <span class="pl-en">findViewById</span>(<span class="pl-c1">R</span>.<span class="pl-c1">id</span>.<span class="pl-smi">pieView</span>);
+
+<span class="pl-c">// Change the thickness of the percentage bar</span>
+<span class="pl-smi">pieView</span>.<span class="pl-en">setPieInnerPadding</span>(<span class="pl-c1">50</span>);</pre></div>
+
+<p>And finally update the text if you want the widget to represent other thing or even toggle the visibility of its center text:</p>
+
+<div class="highlight highlight-source-js"><pre>PieView pieView <span class="pl-k">=</span> (PieView) <span class="pl-en">findViewById</span>(<span class="pl-c1">R</span>.<span class="pl-c1">id</span>.<span class="pl-smi">pieView</span>);
+
+<span class="pl-c">// Update the visibility of the widget text</span>
+<span class="pl-smi">pieView</span>.<span class="pl-en">setInnerTextVisibility</span>(<span class="pl-smi">View</span>.<span class="pl-c1">VISIBLE</span>);
+
+<span class="pl-c">// Change the text of the widget</span>
+<span class="pl-smi">pieView</span>.<span class="pl-en">setInnerText</span>(<span class="pl-s"><span class="pl-pds">"</span>A<span class="pl-pds">"</span></span>);
+
+<span class="pl-c">// Change the text size of the widget</span>
+<span class="pl-smi">pieView</span>.<span class="pl-en">setPercentageTextSize</span>(<span class="pl-c1">35</span>);</pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="center">Without inner text</th>
+<th align="center">With a label instead of a percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img src="https://github.com/zurche/plain-pie/blob/master/img/pie_3.png" alt="alt tag"></td>
+<td align="center"><img src="https://github.com/zurche/plain-pie/blob/master/img/pie_2.png" alt="alt tag"></td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<pre><code>Copyright 2016 Alejandro Zürcher
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</code></pre>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/zurche/plain-pie/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/zurche/plain-pie/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/zurche/plain-pie"></a> is maintained by <a href="https://github.com/zurche">zurche</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
