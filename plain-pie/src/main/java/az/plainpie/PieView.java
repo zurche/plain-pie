@@ -5,14 +5,15 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.annotation.ColorInt;
-import android.support.annotation.FloatRange;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import az.plainpie.annotation.ColorInt;
+import az.plainpie.annotation.FloatRange;
 
 /**
  * @author Alejandro Zürcher (alejandro.zurcher@gmail.com)
