@@ -61,7 +61,7 @@ pieView.setMainBackgroundColor(getResources().getColor(R.color.customColor5));
 pieView.setTextColor(getResources().getColor(R.color.customColor12));
 ```
 
-If required you can also change the area covered by the inner circle of the widget to change is appearence:
+If required you can also change the area covered by the inner circle of the widget to change its appearence:
 ```javascript
 PieView pieView = (PieView) findViewById(R.id.pieView);
 
