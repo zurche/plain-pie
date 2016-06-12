@@ -14,7 +14,7 @@ allprojects {
 Add to your app module build.gradle
 ```groovy
 dependencies {
-        compile 'com.github.zurche:plain-pie:v0.1'
+        compile 'com.github.zurche:plain-pie:v0.1.1'
 }
 ```
 <p align="center">
