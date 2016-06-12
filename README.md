@@ -1,4 +1,5 @@
-# plain-pie [![Release](https://jitpack.io/v/zurche/plain-pie.svg)](https://jitpack.io/#zurche/plain-pie/v0.1) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-plain--pie-green.svg?style=true)](https://android-arsenal.com/details/1/3689)
+# plain-pie [![Release](https://jitpack.io/v/zurche/plain-pie.svg)](https://jitpack.io/#zurche/plain-pie/v0.1) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-plain--pie-green.svg?style=true)](https://android-arsenal.com/details/1/3689) [![Method Count](https://img.shields.io/badge/Methods and size-68 | 38 KB-e91e63.svg)](http://www.methodscount.com/?lib=com.github.zurche%3Aplain-pie%3Av0.1.1) 
+
 
 Add to your project build.gradle
 ```groovy
