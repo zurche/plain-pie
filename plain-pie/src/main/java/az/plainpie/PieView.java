@@ -42,7 +42,7 @@ public class PieView extends View {
         baseLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mPercentageTextView = new TextView(context);
         int roundedPercentage = (int) (mPercentage * 100);
-        mPercentageTextView.setText("" + roundedPercentage + "%");
+        mPercentageTextView.setText(Integer.toString(roundedPercentage) + "%");
         baseLayout.addView(mPercentageTextView);
         mPercentageSize = 50;
         mPercentageTextView.setTextSize(mPercentageSize);
@@ -82,7 +82,7 @@ public class PieView extends View {
         baseLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         if (mPercentageTextView.getText().toString().trim().equals("")) {
             int roundedPercentage = (int) (mPercentage * 100);
-            mPercentageTextView.setText("" + roundedPercentage + "%");
+            mPercentageTextView.setText(Integer.toString(roundedPercentage) + "%");
         }
         mPercentageTextView.setTextSize(mPercentageSize);
         baseLayout.addView(mPercentageTextView);
@@ -173,7 +173,7 @@ public class PieView extends View {
     public void setmPercentage(@FloatRange(from = 0, to = 100) float mPercentage) {
         this.mPercentage = mPercentage / 100;
         int roundedPercentage = (int) mPercentage;
-        this.mPercentageTextView.setText("" + roundedPercentage + "%");
+        this.mPercentageTextView.setText(Integer.toString(roundedPercentage) + "%");
         invalidate();
     }
 
