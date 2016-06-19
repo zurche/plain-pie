@@ -2,7 +2,7 @@
 
 
 Add to your project build.gradle
-```groovy
+```gradle
 allprojects {
 	repositories {
 		...
@@ -12,7 +12,7 @@ allprojects {
 ```
 
 Add to your app module build.gradle
-```groovy
+```gradle
 dependencies {
         compile 'com.github.zurche:plain-pie:v0.1.1'
 }
