@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PieView">
+        <attr name="percentage" format="float" />
+        <attr name="percentage_size" format="integer" />
+        <attr name="inner_pie_padding" format="integer" />
+        <attr name="inner_text_visibility" format="boolean" />
+        <attr name="inner_text" format="string" />
+    </declare-styleable>
+</resources>
