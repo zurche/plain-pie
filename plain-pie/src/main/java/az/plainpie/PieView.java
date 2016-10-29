@@ -72,6 +72,7 @@ public class PieView extends View {
                 0, 0);
         try {
             this.mPercentage = a.getFloat(R.styleable.PieView_percentage, 0) / 100;
+            this.mAngle = (360 * this.mPercentage);
             this.mPercentageSize = a.getInteger(R.styleable.PieView_percentage_size, 0);
             this.mInnerCirclePadding = a.getInteger(R.styleable.PieView_inner_pie_padding, 0);
             this.mPercentageTextView.setText(a.getString(R.styleable.PieView_inner_text));
@@ -173,6 +174,13 @@ public class PieView extends View {
     public void setPieInnerPadding(int padding) {
         this.mInnerCirclePadding = padding;
         invalidate();
+    }
+
+    /**
+     * Get the percentage
+     */
+    public float getPercentage() {
+        return mPercentage * 100;
     }
 
     /**

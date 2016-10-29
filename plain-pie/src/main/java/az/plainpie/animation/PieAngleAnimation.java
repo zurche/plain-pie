@@ -11,20 +11,16 @@ import az.plainpie.PieView;
 public class PieAngleAnimation extends Animation {
 
     private PieView arcView;
-
     private float oldAngle;
-    private float newAngle;
 
-    public PieAngleAnimation(PieView arcView, int newAngle) {
+    public PieAngleAnimation(PieView arcView) {
         this.oldAngle = arcView.getPieAngle();
-        this.newAngle = newAngle;
         this.arcView = arcView;
     }
 
     @Override
     protected void applyTransformation(float interpolatedTime, Transformation transformation) {
-        float angle = 0 + ((newAngle - oldAngle) * interpolatedTime);
-
+        float angle = oldAngle * interpolatedTime;
         arcView.setPieAngle(angle);
         arcView.requestLayout();
     }
