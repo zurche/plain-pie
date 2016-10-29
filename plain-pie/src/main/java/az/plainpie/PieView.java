@@ -30,11 +30,13 @@ public class PieView extends View {
     private RectF mRect;
     private RectF mRectCent;
     private float mPercentage = 0;
+    private float mAngle = 0;
 
     public PieView(Context context) {
         super(context);
 
         mPercentage = 0;
+        mAngle = 0;
 
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
@@ -70,6 +72,7 @@ public class PieView extends View {
                 0, 0);
         try {
             this.mPercentage = a.getFloat(R.styleable.PieView_percentage, 0) / 100;
+            this.mAngle = (360 * this.mPercentage);
             this.mPercentageSize = a.getInteger(R.styleable.PieView_percentage_size, 0);
             this.mInnerCirclePadding = a.getInteger(R.styleable.PieView_inner_pie_padding, 0);
             this.mPercentageTextView.setText(a.getString(R.styleable.PieView_inner_text));
@@ -124,7 +127,7 @@ public class PieView extends View {
         canvas.drawArc(mRect, -90, 360, true, mBackgroundFill);
 
         if (mPercentage != 0) {
-            canvas.drawArc(mRect, -90, (360 * mPercentage), true, mPercentageFill);
+            canvas.drawArc(mRect, -90, this.mAngle, true, mPercentageFill);
             canvas.drawArc(mRectCent, -90, 360, true, mCenterFill);
         }
 
@@ -133,6 +136,14 @@ public class PieView extends View {
         mPercentageTextView.setGravity(Gravity.CENTER);
 
         baseLayout.draw(canvas);
+    }
+
+    public float getPieAngle() {
+        return this.mAngle;
+    }
+
+    public void setPieAngle(float arcAngle) {
+        this.mAngle = arcAngle;
     }
 
     /**
@@ -166,14 +177,22 @@ public class PieView extends View {
     }
 
     /**
+     * Get the percentage
+     */
+    public float getPercentage() {
+        return mPercentage * 100;
+    }
+
+    /**
      * Set a mPercentage between 0 and 100
      *
      * @param mPercentage any float value from 0 to 100
      */
-    public void setmPercentage(@FloatRange(from = 0, to = 100) float mPercentage) {
+    public void setPercentage(@FloatRange(from = 0, to = 100) float mPercentage) {
         this.mPercentage = mPercentage / 100;
         int roundedPercentage = (int) mPercentage;
         this.mPercentageTextView.setText(Integer.toString(roundedPercentage) + "%");
+        this.mAngle = (360 * mPercentage);
         invalidate();
     }
 
