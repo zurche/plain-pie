@@ -3,6 +3,7 @@ package az.plainpie.annotation;
 /**
  * Created by zurcher on 10/06/16.
  */
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
@@ -23,6 +24,6 @@ import static java.lang.annotation.RetentionPolicy.CLASS;
  * }</pre>
  */
 @Retention(CLASS)
-@Target({PARAMETER,METHOD,LOCAL_VARIABLE,FIELD})
+@Target({PARAMETER, METHOD, LOCAL_VARIABLE, FIELD})
 public @interface ColorInt {
 }
