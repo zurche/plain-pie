@@ -177,6 +177,13 @@ public class PieView extends View {
     }
 
     /**
+     * Get the thickness of the mPercentage pie bar
+     */
+    public int getPieInnerPadding() {
+        return this.mInnerCirclePadding;
+    }
+
+    /**
      * Get the percentage
      */
     public float getPercentage() {
