@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:plainpie="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="az.plainpiedemo.MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Animated" />
+
+        <az.plainpie.PieView
+            android:id="@+id/animated_pie_view_2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            plainpie:inner_pie_padding="15"
+            plainpie:inner_text_visibility="true"
+            plainpie:percentage="35"
+            plainpie:percentage_size="35" />
+
+
+        <az.plainpie.PieView
+            android:id="@+id/animated_pie_view_1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="15dp"
+            plainpie:inner_pie_padding="20"
+            plainpie:inner_text_visibility="true"
+            plainpie:percentage="72"
+            plainpie:percentage_size="45" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Un Animated" />
+
+        <az.plainpie.PieView
+            android:id="@+id/unanimated_pie_view"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            plainpie:inner_pie_padding="30"
+            plainpie:inner_text_visibility="true"
+            plainpie:percentage="84"
+            plainpie:percentage_size="70" />
+    </LinearLayout>
+
+
+</RelativeLayout>

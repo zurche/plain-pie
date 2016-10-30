@@ -1,4 +1,4 @@
-# plain-pie [![Release](https://jitpack.io/v/zurche/plain-pie.svg)](https://jitpack.io/#zurche/plain-pie/v0.1) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-plain--pie-green.svg?style=true)](https://android-arsenal.com/details/1/3689) [![Method Count](https://img.shields.io/badge/Methods and size-68 | 38 KB-e91e63.svg)](http://www.methodscount.com/?lib=com.github.zurche%3Aplain-pie%3Av0.1.1) 
+# plain-pie [![Release](https://jitpack.io/v/zurche/plain-pie.svg)](https://jitpack.io/#zurche/plain-pie/v0.2.1) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-plain--pie-green.svg?style=true)](https://android-arsenal.com/details/1/3689) [![Method Count](https://img.shields.io/badge/Methods and size-75 | 38 KB-e91e63.svg)](http://www.methodscount.com/?lib=com.github.zurche%3Aplain-pie%3Av0.2.1) 
 
 
 Add to your project build.gradle
@@ -14,7 +14,7 @@ allprojects {
 Add to your app module build.gradle
 ```gradle
 dependencies {
-        compile 'com.github.zurche:plain-pie:v0.1.1'
+        compile 'com.github.zurche:plain-pie:v0.2.1'
 }
 ```
 <p align="center">
@@ -39,21 +39,27 @@ xmlns:plainpie="http://schemas.android.com/apk/res-auto"
 ```
 
 You can customize the widget from the layout file, or from the activity once you obtain a reference to it:
-```javascript
+```java
 PieView pieView = (PieView) findViewById(R.id.pieView);
 pieView.setPercentageBackgroundColor(getResources().getColor(R.color.customColor2));
 pieView.setInnerText("A");
 ```
 
+You can animate the fill of the percentage bar:
+```java
+PieView animatedPie = (PieView) findViewById(R.id.animated_pie_view_1);
+
+PieAngleAnimation animation = new PieAngleAnimation(animatedPie);
+animation.setDuration(5000); //This is the duration of the animation in millis
+animatedPie.startAnimation(animation);
+```
+
 You can update any color of the widget:
-```javascript
+```java
 PieView pieView = (PieView) findViewById(R.id.pieView);
 
 // Change the color fill of the bar representing the current percentage
 pieView.setPercentageBackgroundColor(getResources().getColor(R.color.customColor1));
-
-// Change the color fill of the center of the widget
-pieView.setCenterBackgroundColor(getResources().getColor(R.color.customColor21));
 
 // Change the color fill of the background of the widget, by default is transparent
 pieView.setMainBackgroundColor(getResources().getColor(R.color.customColor5));
@@ -63,7 +69,7 @@ pieView.setTextColor(getResources().getColor(R.color.customColor12));
 ```
 
 If required you can also change the area covered by the inner circle of the widget to change its appearence:
-```javascript
+```java
 PieView pieView = (PieView) findViewById(R.id.pieView);
 
 // Change the thickness of the percentage bar
@@ -71,7 +77,7 @@ pieView.setPieInnerPadding(50);
 ```
 
 And finally update the text if you want the widget to represent other thing or even toggle the visibility of its center text:
-```javascript
+```java
 PieView pieView = (PieView) findViewById(R.id.pieView);
 
 // Update the visibility of the widget text
