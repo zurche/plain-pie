@@ -13,7 +13,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import az.plainpie.annotation.ColorInt;
-import az.plainpie.annotation.FloatRange;
 
 /**
  * @author Alejandro Zürcher (alejandro.zurcher@gmail.com)
@@ -30,6 +29,7 @@ public class PieView extends View {
     private RectF mRect;
     private RectF mRectCent;
     private float mPercentage = 0;
+    private float mMaxPercentage = 100;
     private float mAngle = 0;
 
     public PieView(Context context) {
@@ -43,7 +43,7 @@ public class PieView extends View {
         baseLayout = new RelativeLayout(context);
         baseLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mPercentageTextView = new TextView(context);
-        int roundedPercentage = (int) (mPercentage * 100);
+        int roundedPercentage = (int) (mPercentage * this.mMaxPercentage);
         mPercentageTextView.setText(Integer.toString(roundedPercentage) + "%");
         baseLayout.addView(mPercentageTextView);
         mPercentageSize = 50;
@@ -71,7 +71,7 @@ public class PieView extends View {
                 R.styleable.PieView,
                 0, 0);
         try {
-            this.mPercentage = a.getFloat(R.styleable.PieView_percentage, 0) / 100;
+            this.mPercentage = a.getFloat(R.styleable.PieView_percentage, 0) / this.mMaxPercentage;
             this.mAngle = (360 * this.mPercentage);
             this.mPercentageSize = a.getInteger(R.styleable.PieView_percentage_size, 0);
             this.mInnerCirclePadding = a.getInteger(R.styleable.PieView_inner_pie_padding, 0);
@@ -84,7 +84,7 @@ public class PieView extends View {
         baseLayout = new RelativeLayout(context);
         baseLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         if (mPercentageTextView.getText().toString().trim().equals("")) {
-            int roundedPercentage = (int) (mPercentage * 100);
+            int roundedPercentage = (int) (mPercentage * this.mMaxPercentage);
             mPercentageTextView.setText(Integer.toString(roundedPercentage) + "%");
         }
         mPercentageTextView.setTextSize(mPercentageSize);
@@ -187,16 +187,16 @@ public class PieView extends View {
      * Get the percentage
      */
     public float getPercentage() {
-        return mPercentage * 100;
+        return mPercentage * this.mMaxPercentage;
     }
 
     /**
-     * Set a mPercentage between 0 and 100
+     * Set a mPercentage between 0 and mMaxPercentage
      *
-     * @param mPercentage any float value from 0 to 100
+     * @param percentage any float value from 0 to mMaxPercentage
      */
-    public void setPercentage(@FloatRange(from = 0, to = 100) float percentage) {
-        this.mPercentage = percentage / 100;
+    public void setPercentage(float percentage) {
+        this.mPercentage = percentage / this.mMaxPercentage;
         int roundedPercentage = (int) percentage;
         this.mPercentageTextView.setText(Integer.toString(roundedPercentage) + "%");
         this.mAngle = (360 * mPercentage);
@@ -247,5 +247,14 @@ public class PieView extends View {
      */
     public void setTextColor(@ColorInt int color) {
         mPercentageTextView.setTextColor(color);
+    }
+
+    /**
+     * Set the max value (default = 100)
+     *
+     * @param mMaxPercentage max value.
+     */
+    public void setMaxPercentage(float mMaxPercentage) {
+        this.mMaxPercentage = mMaxPercentage;
     }
 }
