@@ -177,6 +177,13 @@ public class PieView extends View {
     }
 
     /**
+     * Get the thickness of the mPercentage pie bar
+     */
+    public int getPieInnerPadding() {
+        return this.mInnerCirclePadding;
+    }
+
+    /**
      * Get the percentage
      */
     public float getPercentage() {
@@ -188,9 +195,9 @@ public class PieView extends View {
      *
      * @param mPercentage any float value from 0 to 100
      */
-    public void setPercentage(@FloatRange(from = 0, to = 100) float mPercentage) {
-        this.mPercentage = mPercentage / 100;
-        int roundedPercentage = (int) mPercentage;
+    public void setPercentage(@FloatRange(from = 0, to = 100) float percentage) {
+        this.mPercentage = percentage / 100;
+        int roundedPercentage = (int) percentage;
         this.mPercentageTextView.setText(Integer.toString(roundedPercentage) + "%");
         this.mAngle = (360 * mPercentage);
         invalidate();
