@@ -1,4 +1,4 @@
-# plain-pie [![Release](https://jitpack.io/v/zurche/plain-pie.svg)](https://jitpack.io/#zurche/plain-pie/v0.2.2) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-plain--pie-green.svg?style=true)](https://android-arsenal.com/details/1/3689) [![Method Count](https://img.shields.io/badge/Methods and size-79 | 39 KB-e91e63.svg)](http://www.methodscount.com/?lib=com.github.zurche%3Aplain-pie%3Av0.2.2) 
+# plain-pie [![Release](https://jitpack.io/v/zurche/plain-pie.svg)](https://jitpack.io/#zurche/plain-pie/v0.2.2) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-plain--pie-green.svg?style=true)](https://android-arsenal.com/details/1/3689) 
 
 
 Add to your project build.gradle
