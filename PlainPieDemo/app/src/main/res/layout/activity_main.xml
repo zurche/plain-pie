@@ -26,10 +26,7 @@
             android:id="@+id/animated_pie_view_2"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            plainpie:inner_pie_padding="15"
-            plainpie:inner_text_visibility="true"
-            plainpie:percentage="35"
-            plainpie:percentage_size="35" />
+            plainpie:percentage="1" />
 
 
         <az.plainpie.PieView
