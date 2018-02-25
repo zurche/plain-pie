@@ -19,10 +19,11 @@ import az.plainpie.annotation.ColorInt;
  */
 public class PieView extends View {
 
+    public static final String DEFAULT_PERCENTAGE_TEXT = "0%";
     private RelativeLayout baseLayout;
     private TextView mPercentageTextView = null;
-    private int mPercentageSize;
-    private int mInnerCirclePadding;
+    private int mPercentageSize = 35;
+    private int mInnerCirclePadding = 15;
     private Paint mPercentageFill;
     private Paint mBackgroundFill;
     private Paint mCenterFill;
@@ -84,11 +85,19 @@ public class PieView extends View {
         baseLayout = new RelativeLayout(context);
         baseLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         if (mPercentageTextView.getText().toString().trim().equals("")) {
-            int roundedPercentage = (int) (mPercentage * this.mMaxPercentage);
-            mPercentageTextView.setText(Integer.toString(roundedPercentage) + "%");
+            setPercentageText();
         }
         mPercentageTextView.setTextSize(mPercentageSize);
         baseLayout.addView(mPercentageTextView);
+    }
+
+    private void setPercentageText() {
+        if (mPercentage != 0) {
+            int roundedPercentage = (int) (mPercentage * this.mMaxPercentage);
+            mPercentageTextView.setText(Integer.toString(roundedPercentage) + "%");
+        } else {
+            mPercentageTextView.setText(DEFAULT_PERCENTAGE_TEXT);
+        }
     }
 
     private void init() {
@@ -197,9 +206,8 @@ public class PieView extends View {
      */
     public void setPercentage(float percentage) {
         this.mPercentage = percentage / this.mMaxPercentage;
-        int roundedPercentage = (int) percentage;
-        this.mPercentageTextView.setText(Integer.toString(roundedPercentage) + "%");
         this.mAngle = (360 * mPercentage);
+        setPercentageText();
         invalidate();
     }
 
