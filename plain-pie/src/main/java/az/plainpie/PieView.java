@@ -19,11 +19,14 @@ import az.plainpie.annotation.ColorInt;
  */
 public class PieView extends View {
 
-    public static final String DEFAULT_PERCENTAGE_TEXT = "0%";
+    private static final String DEFAULT_PERCENTAGE_TEXT = "0%";
+    private static final int DEFAULT_PERCENTAGE_SIZE = 35;
+    private static final int DEFAULT_INNER_CIRCLE_PADDING = 15;
+
     private RelativeLayout baseLayout;
     private TextView mPercentageTextView = null;
-    private int mPercentageSize = 35;
-    private int mInnerCirclePadding = 15;
+    private int mPercentageSize = DEFAULT_PERCENTAGE_SIZE;
+    private int mInnerCirclePadding = DEFAULT_INNER_CIRCLE_PADDING;
     private Paint mPercentageFill;
     private Paint mBackgroundFill;
     private Paint mCenterFill;
@@ -72,10 +75,13 @@ public class PieView extends View {
                 R.styleable.PieView,
                 0, 0);
         try {
-            this.mPercentage = a.getFloat(R.styleable.PieView_percentage, 0) / this.mMaxPercentage;
-            this.mAngle = (360 * this.mPercentage);
-            this.mPercentageSize = a.getInteger(R.styleable.PieView_percentage_size, 0);
-            this.mInnerCirclePadding = a.getInteger(R.styleable.PieView_inner_pie_padding, 0);
+            this.mPercentage = a.getFloat(R.styleable.PieView_percentage, 0);
+            if(this.mPercentage > 0) {
+                this.mPercentage = a.getFloat(R.styleable.PieView_percentage, 0) / this.mMaxPercentage;
+                this.mAngle = (360 * this.mPercentage);
+            }
+            this.mPercentageSize = a.getInteger(R.styleable.PieView_percentage_size, DEFAULT_PERCENTAGE_SIZE);
+            this.mInnerCirclePadding = a.getInteger(R.styleable.PieView_inner_pie_padding, DEFAULT_INNER_CIRCLE_PADDING);
             this.mPercentageTextView.setText(a.getString(R.styleable.PieView_inner_text));
             this.mPercentageTextView.setVisibility(a.getBoolean(R.styleable.PieView_inner_text_visibility, true) ? View.VISIBLE : View.INVISIBLE);
         } finally {
