@@ -10,7 +10,7 @@ android {
         minSdkVersion 9
         targetSdkVersion 27
         versionCode 1
-        versionName "0.2.8"
+        versionName "0.2.9"
     }
     buildTypes {
         release {
