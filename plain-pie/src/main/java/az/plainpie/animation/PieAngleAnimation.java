@@ -8,6 +8,7 @@ import az.plainpie.PieView;
 /**
  * @author Alejandro Zürcher (alejandro.zurcher@gmail.com)
  */
+@SuppressWarnings("unused")
 public class PieAngleAnimation extends Animation {
 
     private PieView arcView;

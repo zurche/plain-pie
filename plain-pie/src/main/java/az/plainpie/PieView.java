@@ -22,6 +22,7 @@ public class PieView extends View {
     private static final String DEFAULT_PERCENTAGE_TEXT = "0%";
     private static final int DEFAULT_PERCENTAGE_SIZE = 35;
     private static final int DEFAULT_INNER_CIRCLE_PADDING = 15;
+    private static final int CIRCLE_DEGREES = 360;
 
     private RelativeLayout baseLayout;
     private TextView mPercentageTextView = null;
@@ -58,32 +59,32 @@ public class PieView extends View {
 
     public PieView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setupWidgetWithParams(context, attrs, 0);
+        setupWidgetWithParams(context, attrs);
         init();
     }
 
     public PieView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        setupWidgetWithParams(context, attrs, defStyle);
+        setupWidgetWithParams(context, attrs);
         init();
     }
 
-    private void setupWidgetWithParams(Context context, AttributeSet attrs, int defStyle) {
+    private void setupWidgetWithParams(Context context, AttributeSet attrs) {
         mPercentageTextView = new TextView(context);
         TypedArray a = context.getTheme().obtainStyledAttributes(
                 attrs,
                 R.styleable.PieView,
                 0, 0);
         try {
-            this.mPercentage = a.getFloat(R.styleable.PieView_percentage, 0);
-            if(this.mPercentage > 0) {
-                this.mPercentage = a.getFloat(R.styleable.PieView_percentage, 0) / this.mMaxPercentage;
-                this.mAngle = (360 * this.mPercentage);
+            mPercentage = a.getFloat(R.styleable.PieView_percentage, 0);
+            if (mPercentage > 0) {
+                mPercentage = a.getFloat(R.styleable.PieView_percentage, 0) / this.mMaxPercentage;
+                mAngle = (CIRCLE_DEGREES * this.mPercentage);
             }
-            this.mPercentageSize = a.getInteger(R.styleable.PieView_percentage_size, DEFAULT_PERCENTAGE_SIZE);
-            this.mInnerCirclePadding = a.getInteger(R.styleable.PieView_inner_pie_padding, DEFAULT_INNER_CIRCLE_PADDING);
-            this.mPercentageTextView.setText(a.getString(R.styleable.PieView_inner_text));
-            this.mPercentageTextView.setVisibility(a.getBoolean(R.styleable.PieView_inner_text_visibility, true) ? View.VISIBLE : View.INVISIBLE);
+            mPercentageSize = a.getInteger(R.styleable.PieView_percentage_size, DEFAULT_PERCENTAGE_SIZE);
+            mInnerCirclePadding = a.getInteger(R.styleable.PieView_inner_pie_padding, DEFAULT_INNER_CIRCLE_PADDING);
+            mPercentageTextView.setText(a.getString(R.styleable.PieView_inner_text));
+            mPercentageTextView.setVisibility(a.getBoolean(R.styleable.PieView_inner_text_visibility, true) ? View.VISIBLE : View.INVISIBLE);
         } finally {
             a.recycle();
         }
@@ -99,7 +100,7 @@ public class PieView extends View {
 
     private void setPercentageText() {
         if (mPercentage != 0) {
-            int roundedPercentage = (int) (mPercentage * this.mMaxPercentage);
+            int roundedPercentage = (int) (mPercentage * mMaxPercentage);
             mPercentageTextView.setText(Integer.toString(roundedPercentage) + "%");
         } else {
             mPercentageTextView.setText(DEFAULT_PERCENTAGE_TEXT);
@@ -139,12 +140,12 @@ public class PieView extends View {
         mRect.set(left, top, left + width, top + width);
         mRectCent.set(left + mInnerCirclePadding, top + mInnerCirclePadding, (left - mInnerCirclePadding) + width, (top - mInnerCirclePadding) + width);
 
-        canvas.drawArc(mRect, -90, 360, true, mBackgroundFill);
+        canvas.drawArc(mRect, -90, CIRCLE_DEGREES, true, mBackgroundFill);
 
         if (mPercentage != 0) {
-            canvas.drawArc(mRect, -90, this.mAngle, true, mPercentageFill);
-            canvas.drawArc(mRectCent, -90, 360, true, mCenterFill);
+            canvas.drawArc(mRect, -90, mAngle, true, mPercentageFill);
         }
+        canvas.drawArc(mRectCent, -90, CIRCLE_DEGREES, true, mCenterFill);
 
         mPercentageTextView.measure(MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY));
         mPercentageTextView.layout(left, top, left + width, top + height);
@@ -154,11 +155,11 @@ public class PieView extends View {
     }
 
     public float getPieAngle() {
-        return this.mAngle;
+        return mAngle;
     }
 
-    public void setPieAngle(float arcAngle) {
-        this.mAngle = arcAngle;
+    public void setPieAngle(final float arcAngle) {
+        mAngle = arcAngle;
     }
 
     /**
@@ -166,8 +167,9 @@ public class PieView extends View {
      *
      * @param visibility One of {@link #VISIBLE}, {@link #INVISIBLE}, or {@link #GONE}.
      */
-    public void setInnerTextVisibility(int visibility) {
-        this.mPercentageTextView.setVisibility(visibility);
+    @SuppressWarnings("unused")
+    public void setInnerTextVisibility(final int visibility) {
+        mPercentageTextView.setVisibility(visibility);
         invalidate();
     }
 
@@ -176,8 +178,9 @@ public class PieView extends View {
      *
      * @param text any valid String value
      */
-    public void setInnerText(String text) {
-        this.mPercentageTextView.setText(text);
+    @SuppressWarnings("unused")
+    public void setInnerText(final String text) {
+        mPercentageTextView.setText(text);
         invalidate();
     }
 
@@ -186,8 +189,9 @@ public class PieView extends View {
      *
      * @param padding value ranging from 1 to the width of the widget
      */
-    public void setPieInnerPadding(int padding) {
-        this.mInnerCirclePadding = padding;
+    @SuppressWarnings("unused")
+    public void setPieInnerPadding(final int padding) {
+        mInnerCirclePadding = padding;
         invalidate();
     }
 
@@ -195,14 +199,15 @@ public class PieView extends View {
      * Get the thickness of the mPercentage pie bar
      */
     public int getPieInnerPadding() {
-        return this.mInnerCirclePadding;
+        return mInnerCirclePadding;
     }
 
     /**
      * Get the percentage
      */
+    @SuppressWarnings("unused")
     public float getPercentage() {
-        return mPercentage * this.mMaxPercentage;
+        return mPercentage * mMaxPercentage;
     }
 
     /**
@@ -210,9 +215,10 @@ public class PieView extends View {
      *
      * @param percentage any float value from 0 to mMaxPercentage
      */
-    public void setPercentage(float percentage) {
-        this.mPercentage = percentage / this.mMaxPercentage;
-        this.mAngle = (360 * mPercentage);
+    @SuppressWarnings("unused")
+    public void setPercentage(final float percentage) {
+        mPercentage = percentage / mMaxPercentage;
+        mAngle = (CIRCLE_DEGREES * mPercentage);
         setPercentageText();
         invalidate();
     }
@@ -222,8 +228,9 @@ public class PieView extends View {
      *
      * @param size any valid float
      */
-    public void setPercentageTextSize(float size) {
-        this.mPercentageTextView.setTextSize(size);
+    @SuppressWarnings("unused")
+    public void setPercentageTextSize(final float size) {
+        mPercentageTextView.setTextSize(size);
         invalidate();
     }
 
@@ -232,7 +239,8 @@ public class PieView extends View {
      *
      * @param color The new color (including alpha) to set in the paint.
      */
-    public void setInnerBackgroundColor(@ColorInt int color) {
+    @SuppressWarnings("unused")
+    public void setInnerBackgroundColor(@ColorInt final int color) {
         mCenterFill.setColor(color);
     }
 
@@ -241,7 +249,8 @@ public class PieView extends View {
      *
      * @param color The new color (including alpha) to set in the paint.
      */
-    public void setPercentageBackgroundColor(@ColorInt int color) {
+    @SuppressWarnings("unused")
+    public void setPercentageBackgroundColor(@ColorInt final int color) {
         mPercentageFill.setColor(color);
     }
 
@@ -250,7 +259,8 @@ public class PieView extends View {
      *
      * @param color The new color (including alpha) to set in the paint.
      */
-    public void setMainBackgroundColor(@ColorInt int color) {
+    @SuppressWarnings("unused")
+    public void setMainBackgroundColor(@ColorInt final int color) {
         mBackgroundFill.setColor(color);
     }
 
@@ -259,16 +269,18 @@ public class PieView extends View {
      *
      * @param color The new color (including alpha) to set in the paint.
      */
-    public void setTextColor(@ColorInt int color) {
+    @SuppressWarnings("unused")
+    public void setTextColor(@ColorInt final int color) {
         mPercentageTextView.setTextColor(color);
     }
 
     /**
      * Set the max value (default = 100)
      *
-     * @param mMaxPercentage max value.
+     * @param maxPercentage max value.
      */
-    public void setMaxPercentage(float mMaxPercentage) {
-        this.mMaxPercentage = mMaxPercentage;
+    @SuppressWarnings("unused")
+    public void setMaxPercentage(final float maxPercentage) {
+        mMaxPercentage = maxPercentage;
     }
 }
