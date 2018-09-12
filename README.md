@@ -1,4 +1,4 @@
-# plain-pie [![Release](https://jitpack.io/v/zurche/plain-pie.svg)](https://jitpack.io/#zurche/plain-pie/v0.2.4) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-plain--pie-green.svg?style=true)](https://android-arsenal.com/details/1/3689) 
+# plain-pie [![Release](https://jitpack.io/v/zurche/plain-pie.svg)](https://jitpack.io/#zurche/plain-pie/v0.2.5) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-plain--pie-green.svg?style=true)](https://android-arsenal.com/details/1/3689) 
 
 
 Add to your project build.gradle
@@ -14,7 +14,7 @@ allprojects {
 Add to your app module build.gradle
 ```gradle
 dependencies {
-        compile 'com.github.zurche:plain-pie:v0.2.4'
+        compile 'com.github.zurche:plain-pie:v0.2.5'
 }
 ```
 <p align="center">
